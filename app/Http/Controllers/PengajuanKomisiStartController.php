@@ -3,25 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PengajuanKomisiStart;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 class PengajuanKomisiStartController extends Controller
 {
-    public function insertData()
-    {
-        $data_pengajuan_komisi = New PengajuanKomisiStart();
-        if (isset($_POST['submit'])) {
-            $data_pengajuan_komisi = $_POST['id'];
+    public function insertData(Request $request)
+    {   
+        $dataAL = DB::table('pengajuan_komisi')->where('no_al', $request->input('id'))->get();
 
-            for($i = 0; $i < count($data_pengajuan_komisi); $i++){
-                echo $pengajuan[$i];
-                // mysqli_query("INSERT INTO pengajuan_komisi_start WHERE id=".$_POST['submit']['$i']);
-            }
+        foreach ($dataAL as $dataAttach) {
+            # code...
+            DB::table('pengajuan_komisi_attach')->insert(
+                [
+                    'name' => $dataAttach->owner,
+                    'email' => $dataAttach->email,
+                    'department' => $dataAttach->department,
+                    'attachment' => $dataAttach->no_al,
+                    'manajer_note' => $request->manajer_note,
+                    'hrd_note' => $request->hrd_note,
+                    'proses' => $request->proses,
+                    'pa_id' => $dataAttach->no_pa,
+                    'date_submit' => Carbon::now(),
+                    'date_approve' => $request->date('date_approve'),
+                    'file' => $request->file('file'),
+                ]);
         }
-        return redirect('/home');
-
-        // $myCheckboxes = $request->input('id');
-        // dd($myCheckboxes);
+        return redirect('/home')->with('Success', 'Data berhasil disubmit');
+        // dd($dataAL);
     }
 }

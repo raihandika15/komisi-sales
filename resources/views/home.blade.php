@@ -85,19 +85,21 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>
-                                <form action="" method="">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type="submit" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></button>
-                                </form>
-                              </td>
-                          </tr>
+                        @foreach ($pengajuan_komisi as $pengajuan_komisi_attach)
+                        <tr>
+                            <td>{{ $pengajuan_komisi_attach->name }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <form action="" method="">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></button>
+                              </form>
+                            </td>
+                        </tr>
+                        @endforeach
                       </tbody>
                   </table><hr>
                 {{-- Status Pengajuan Komisi Manual --}}
@@ -174,19 +176,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td scope="row"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                  <form action="" method="">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></button>
-                                  </form>
-                                </td>
-                            </tr>
+                          @foreach ($pelanggan_baru as $pelanggan_baru_attach)
+                          <tr>
+                              <td scope="row">{{ $pelanggan_baru_attach->name }}</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>
+                                <form action="" method="">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></button>
+                                </form>
+                              </td>
+                          </tr>
+                          @endforeach
                         </tbody>
                     </table><hr>
               </div>

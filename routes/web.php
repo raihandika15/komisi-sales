@@ -10,6 +10,7 @@ use App\Http\Controllers\PelangganBaruController;
 use App\Http\Controllers\PengajuanKomisiController;
 use App\Http\Controllers\PengajuanManualController;
 use App\Http\Controllers\PengajuanTenderController;
+use App\Models\PelangganBaru;
 use App\Models\PengajuanManual;
 use App\Models\PengajuanTender;
 use Faker\Guesser\Name;
@@ -47,7 +48,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pengajuan_tender', [\App\Http\Controllers\PengajuanTenderController::class, 'PengajuanTender']);
     Route::post('/pengajuan_tender_start', [PengajuanTenderController::class, 'startPengajuanTender']);
     
+    //Pengajuan Pelanggan Baru
     Route::get('/pelanggan_baru', [\App\Http\Controllers\PelangganBaruController::class, 'DataPelangganBaru']);
+    Route::post('/pelanggan_baru_start', [PelangganBaruController::class, 'insertPelanggan']);
+
+    //Rekap Komisi
     Route::get('/rekap_komisi', [\App\Http\Controllers\RekapKomisiController::class, 'RekapKomisi']);
     
     // Route show data

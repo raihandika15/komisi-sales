@@ -47,6 +47,6 @@ class PengajuanManualController extends Controller
 
         $pengajuan->save();
 
-        return redirect('/pengajuan_manual');
+        return redirect('/home');
     }
 }

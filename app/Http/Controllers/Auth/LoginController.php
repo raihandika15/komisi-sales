@@ -58,8 +58,8 @@ class LoginController extends Controller
             {
                 Session::put('login', 1);
                 Session::put('email', $input['email']);
+                // Session::put('name', $input['email']);
 
-                // return redirect()->route('home');
                 return redirect('/home');
             }else{
                 return redirect()->route('admin.home');

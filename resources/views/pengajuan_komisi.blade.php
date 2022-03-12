@@ -105,7 +105,7 @@
                         <tbody>
                             @foreach ($data_pengajuan_komisi as $item)
                                 <tr>
-                                    <td style="width: 25%;"><label><input type="checkbox" value="{{ $item['id'] }}" name="id"></label></td>
+                                    <td style="width: 25%;"><label><input type="checkbox" value="{{ $item['no_al'] }}" name="id"></label></td>
                                     <td style="width: 25%;">{{ $item['no_pa'] }}</td>
                                     <td style="width: 25%;">{{ $item['ar_type'] }}</td>
                                     <td style="width: 25%;">{{ $item['cust_name'] }}</td>
@@ -135,7 +135,7 @@
                       </table>                  
                     </div>
                     <div class="col-md-12 mt-3">
-                      <input type="submit" class="btn btn-warning" value="submit" style="color: #fff; border-radius:10px;">
+                      <input type="submit" class="btn btn-warning" value="Submit" style="color: #fff; border-radius:10px;">
                     </div>
               </form>
             </div>

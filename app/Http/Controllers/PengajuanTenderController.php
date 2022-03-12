@@ -38,6 +38,6 @@ class PengajuanTenderController extends Controller
 
         $pengajuan_tender->save();
 
-        return redirect('/pengajuan_tender');
+        return redirect('/home');
     }
 }

@@ -9,5 +9,5 @@ class PengajuanKomisiStart extends Model
 {
     use HasFactory;
 
-    protected $table = 'pengajuan_komisi_start';
+    protected $table = 'pengajuan_komisi_attach';
 }

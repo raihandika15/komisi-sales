@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PengajuanKomisiStart;
 use Illuminate\Http\Request;
 use App\Models\PengajuanManual;
 use App\Models\PengajuanTender;
@@ -46,8 +47,10 @@ class HomeController extends Controller
 
     public function showData()
     {
+        $pengajuan_komisi = PengajuanKomisiStart::where('email', Session::get('email'))->get();
         $pengajuan_manual = PengajuanManual::where('email', Session::get('email'))->get();
         $pengajuan_tender = PengajuanTender::where('email', Session::get('email'))->get();
-        return view('home', compact(['pengajuan_manual','pengajuan_tender']));
+        $pelanggan_baru = DB::table('pengajuan_pelanggan_attach')->where('email', Session::get('email'))->get();
+        return view('home', compact(['pengajuan_manual','pengajuan_tender','pengajuan_komisi','pelanggan_baru']));
     }
 }

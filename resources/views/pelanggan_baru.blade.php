@@ -66,70 +66,73 @@
               </div>
             </div>
             <div class="card-body">
-              <div>
-                <h5><b>List</b></h5>
-              </div>
-              <div class="table-responsive" style="height: 420px">
-                  <table mdbTable mdbTableScroll scrollY="true" class="table align-middle table-borderless" id="myTable">
-                      <thead>
+              <form method="POST" action="/pelanggan_baru_start">
+                @csrf
+                <div>
+                  <h5><b>List</b></h5>
+                </div>
+                <div class="table-responsive" style="height: 420px">
+                    <table mdbTable mdbTableScroll scrollY="true" class="table align-middle table-borderless" id="myTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" onchange="checkAll(this)"></th>
+                                <th>PA ID</th>
+                                <th>AR type</th>
+                                <th>Customer Name</th>
+                                <th>Segment</th>
+                                <th>BA Date</th>
+                                <th>Activation Actual Date</th>
+                                <th>Deactivation Date</th>
+                                <th>SID</th>
+                                <th>Layanan</th>
+                                <th>Quantity</th>
+                                <th>Bandwith</th>
+                                <th>Biaya Sewa</th>
+                                <th>Biaya Installasi</th>
+                                <th>Biaya Relokasi</th>
+                                <th>Address Origination</th>
+                                <th>Address Termination</th>
+                                <th>Owner</th>
+                                <th>BAA ID</th>
+                                <th>Price Lama</th>
+                                <th>SID Lama</th>
+                                <th>Id Customer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($data_pelanggan_baru as $item)
                           <tr>
-                              <th><input type="checkbox" onchange="checkAll(this)"></th>
-                              <th>PA ID</th>
-                              <th>AR type</th>
-                              <th>Customer Name</th>
-                              <th>Segment</th>
-                              <th>BA Date</th>
-                              <th>Activation Actual Date</th>
-                              <th>Deactivation Date</th>
-                              <th>SID</th>
-                              <th>Layanan</th>
-                              <th>Quantity</th>
-                              <th>Bandwith</th>
-                              <th>Biaya Sewa</th>
-                              <th>Biaya Installasi</th>
-                              <th>Biaya Relokasi</th>
-                              <th>Address Origination</th>
-                              <th>Address Termination</th>
-                              <th>Owner</th>
-                              <th>BAA ID</th>
-                              <th>Price Lama</th>
-                              <th>SID Lama</th>
-                              <th>Id Customer</th>
+                              <td><input type="checkbox" value="{{ $item['id_cust'] }}" name="id"></td>
+                              <td>{{ $item['no_pa'] }}</td>
+                              <td>{{ $item['ar_type'] }}</td>
+                              <td>{{ $item['cust_name'] }}</td>
+                              <td>{{ $item['segment'] }}</td>
+                              <td>{{ $item['ba_date'] }}</td>
+                              <td>{{ $item['active_date'] }}</td>
+                              <td>{{ $item['deactive_date'] }}</td>
+                              <td>{{ $item['sid'] }}</td>
+                              <td>{{ $item['layanan'] }}</td>
+                              <td>{{ $item['quantity'] }}</td>
+                              <td>{{ $item['bandwith'] }}</td>
+                              <td>{{ $item['biaya_sewa'] }}</td>
+                              <td>{{ $item['biaya_instal'] }}</td>
+                              <td>{{ $item['biaya_relok'] }}</td>
+                              <td>{{ $item['address_ori'] }}</td>
+                              <td>{{ $item['address_term'] }}</td>
+                              <td>{{ $item['owner'] }}</td>
+                              <td>{{ $item['baa_id'] }}</td>
+                              <td>{{ $item['price_lama'] }}</td>
+                              <td>{{ $item['sid_lama'] }}</td>
+                              <td>{{ $item['id_cust'] }}</td>
                           </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($data_pelanggan_baru as $item)
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>{{ $item['no_pa'] }}</td>
-                            <td>{{ $item['ar_type'] }}</td>
-                            <td>{{ $item['cust_name'] }}</td>
-                            <td>{{ $item['segment'] }}</td>
-                            <td>{{ $item['ba_date'] }}</td>
-                            <td>{{ $item['active_date'] }}</td>
-                            <td>{{ $item['deactive_date'] }}</td>
-                            <td>{{ $item['sid'] }}</td>
-                            <td>{{ $item['layanan'] }}</td>
-                            <td>{{ $item['quantity'] }}</td>
-                            <td>{{ $item['bandwith'] }}</td>
-                            <td>{{ $item['biaya_sewa'] }}</td>
-                            <td>{{ $item['biaya_instal'] }}</td>
-                            <td>{{ $item['biaya_relok'] }}</td>
-                            <td>{{ $item['address_ori'] }}</td>
-                            <td>{{ $item['address_term'] }}</td>
-                            <td>{{ $item['owner'] }}</td>
-                            <td>{{ $item['baa_id'] }}</td>
-                            <td>{{ $item['price_lama'] }}</td>
-                            <td>{{ $item['sid_lama'] }}</td>
-                            <td>{{ $item['id_cust'] }}</td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                  </table>
-              </div>
-              <div class="col-md-12 mt-3">
-                <input type="submit" class="btn btn-warning" style="color: #fff; border-radius:10px" >
-              </div>
+                          @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <input type="submit" class="btn btn-warning" value="Submit" style="color: #fff; border-radius:10px;">
+                </div>
+              </form>
             </div>
           </div>
         </main>
