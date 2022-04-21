@@ -25,6 +25,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="status_pengajuan">
+                    <span data-feather="activity"></span>
+                    Status Pengajuan
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="pengajuan_komisi">
                     <span data-feather="file-plus"></span>
                     Pengajuan Komisi
@@ -66,22 +72,23 @@
               </div>
             </div>
             <div class="card-body">
-              <div>
-                <h5><b>List</b></h5>
-                <div class="gap-2 d-md-flex justify-content-md-end">
-                  <button class="btn btn-danger me-md-2" type="button">Export</button>
+              <div class="row">
+                <div class="col-auto me-auto">
+                  <h5><b>List</b></h5>
                 </div>
+                <div class="col-auto">
+                  <a href="/export_pdf" class="btn btn-danger mb-3" type="button" target="_blank"><span data-feather="printer"></span> Cetak</a>
+                </div>
+                
               </div>
               <div class="table-responsive">
-                <table mdbTable mdbTableScroll scrollY="true" class="table table-sm align-middle table-bordered" id="myTable">
+                <table mdbTable mdbTableScroll scrollY="true" class="table table-sm align-middle " id="myTable">
                   <thead>
                     <tr>
-                      <th><input type="checkbox" onchange="checkAll(this)"></th>
+                      {{-- <th><input type="checkbox" onchange="checkAll(this)"></th> --}}
                       <th>No</th>
-                      <th>NIK</th>
                       <th>Nama</th>
-                      <th>Bidang</th>
-                      <th>Jabatan</th>
+                      <th>Departemen</th>
                       <th>Target Bulanan</th>
                       <th>Realisasi Bulanan</th>
                       <th>Nilai Deaktivasi</th>
@@ -99,9 +106,28 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td></td>
-                    </tr>
+                    @foreach ($data_rekap_komisi as $recaps)
+                      <tr>
+                        {{-- <td><input type="checkbox" value="{{ $recaps['id'] }}" name="id"></td> --}}
+                        <td>{{ $loop->iteration}}</td>
+                        <td>{{ $recaps['name'] }}</td>
+                        <td>{{ $recaps['departmen'] }}</td>
+                        <td>{{ $recaps['target_bulanan'] }}</td>
+                        <td>{{ $recaps['realisasi_bulanan'] }}</td>
+                        <td>{{ $recaps['nilai_deaktivasi'] }}</td>
+                        <td>{{ $recaps['after_deaktivasi'] }}</td>
+                        <td>{{ $recaps['nilai_komisi'] }}</td>
+                        <td>{{ $recaps['jumlah_pelangganBaru'] }}</td>
+                        <td>{{ $recaps['list_pelangganBaru'] }}</td>
+                        <td>{{ $recaps['nilai_pelangganBaru'] }}</td>
+                        <td>{{ $recaps['jumlah_tender'] }}</td>
+                        <td>{{ $recaps['nilai_tender'] }}</td>
+                        <td>{{ $recaps['total_dibayarkan'] }}</td>
+                        <td>{{ $recaps['period_pembayaran'] }}</td>
+                        <td>{{ $recaps['period_klaim'] }}</td>
+                        <td>{{ $recaps['keterangan'] }}</td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -130,5 +156,4 @@
         $('#myTable').DataTable();
     });
 </script>
-
 @endsection

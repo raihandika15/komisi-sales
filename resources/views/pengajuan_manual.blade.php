@@ -21,6 +21,12 @@
                       </a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="status_pengajuan">
+                        <span data-feather="activity"></span>
+                        Status Pengajuan
+                      </a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="pengajuan_komisi">
                         <span data-feather="file-plus"></span>
                         Pengajuan Komisi
@@ -74,6 +80,10 @@
                       <div class="col">
                         <label for="formGroupExampleInput" class="form-label">Email</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="email">
+                      </div>
+                      <div class="col">
+                        <label for="formGroupExampleInput" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="name">
                       </div>
                       <div class="col">
                         <label for="formGroupExampleInput" class="form-label">Customer Name</label>

@@ -16,6 +16,7 @@ class CreatePengajuanTender extends Migration
         Schema::create('pengajuan_tender', function (Blueprint $table) {
             $table->id();
             $table->string('file');
+            $table->string('name');
             $table->text('cust_name');
             $table->string('segment');
             $table->date('date');

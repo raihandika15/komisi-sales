@@ -47,8 +47,6 @@ class PelangganBaruController extends Controller
                     'file' => $request->file('file'),
                 ]);
         }
-        return redirect('/homme');
-
-        // dd($dataID);
+        return redirect('/home');
     }
 }

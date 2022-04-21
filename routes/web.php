@@ -10,6 +10,7 @@ use App\Http\Controllers\PelangganBaruController;
 use App\Http\Controllers\PengajuanKomisiController;
 use App\Http\Controllers\PengajuanManualController;
 use App\Http\Controllers\PengajuanTenderController;
+use App\Http\Controllers\StatusPengajuanController;
 use App\Models\PelangganBaru;
 use App\Models\PengajuanManual;
 use App\Models\PengajuanTender;
@@ -42,7 +43,6 @@ Route::middleware(['auth'])->group(function () {
     // Pengajuan Komisi Manual
     Route::get('/pengajuan_manual', [\App\Http\Controllers\PengajuanManualController::class, 'PengajuanManual']);
     Route::post('/pengajuan_manual_start', [PengajuanManualController::class, 'startPengajuan']);
-    // Route::get('/home/destroy{id}', [HomeController::class, 'destroy']);
     
     // Pengajuan tender
     Route::get('/pengajuan_tender', [\App\Http\Controllers\PengajuanTenderController::class, 'PengajuanTender']);
@@ -53,11 +53,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pelanggan_baru_start', [PelangganBaruController::class, 'insertPelanggan']);
 
     //Rekap Komisi
-    Route::get('/rekap_komisi', [\App\Http\Controllers\RekapKomisiController::class, 'RekapKomisi']);
+    Route::get('/rekap_komisi', [\App\Http\Controllers\RekapKomisiController::class, 'index']);
+    Route::get('/export_pdf', [RekapKomisiController::class, 'buttonEksport'])->name('export_pdf');
     
     // Route show data
     Route::get('/home', [HomeController::class, 'showData']);
-    // Route::resource('pengajuan_tender', 'HomeController');
+
+    Route::get('/status_pengajuan', [\App\Http\Controllers\StatusPengajuanController::class, 'index']);
+    Route::get('/status_pengajuan', [\App\Http\Controllers\StatusPengajuanController::class, 'showDataPengajuan']);
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

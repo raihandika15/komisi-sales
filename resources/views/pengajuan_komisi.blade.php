@@ -25,6 +25,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="status_pengajuan">
+                    <span data-feather="activity"></span>
+                    Status Pengajuan
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="pengajuan_komisi">
                     <span data-feather="file-plus"></span>
                     Pengajuan Komisi
@@ -73,7 +79,7 @@
                   <h5><b>List</b></h5>
                 </div>
                 <div class="table-responsive" style="height: 420px">
-                    <table mdbTable mdbTableScroll scrollY="true" class="table table-striped align-middle table-borderless" id="myTable">
+                    <table mdbTable mdbTableScroll scrollY="true" class="table table-sm align-middle" id="myTable">
                         <thead>
                             <tr>
                                 <th><input type="checkbox" onchange="checkAll(this)"></th>

@@ -22,6 +22,7 @@ class PengajuanTenderController extends Controller
         $pengajuan_tender = New PengajuanTender();
 
         $pengajuan_tender->file = request('file');
+        $pengajuan_tender->name = request('name');
         $pengajuan_tender->cust_name = request('cust_name');
         $pengajuan_tender->segment = request('segment');
         $pengajuan_tender->date = request('date');

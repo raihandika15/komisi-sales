@@ -13,6 +13,7 @@ class PengajuanManual extends Model
 
     protected $fillable = [
         'file', 
+        'name',
         'cust_name', 
         'no_pa', 
         'no_al', 

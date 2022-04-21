@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
@@ -23,6 +24,12 @@
                   <a class="nav-link active" aria-current="page" href="home">
                     <span data-feather="home"></span>
                     Dashboard
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="status_pengajuan">
+                    <span data-feather="activity"></span>
+                    Status Pengajuan
                   </a>
                 </li>
                 <li class="nav-item">
@@ -71,128 +78,6 @@
                 <h4 style="color: blue">Grafik Pendapatan Komisi</h4>
                 {{-- Grafik Pendapatan --}}
                 <canvas class="my-4 w-100" id="myChart" width="900" height="360"></canvas><hr>
-
-                {{-- Status Pengajuan Komisi --}}
-                  <table class="table table-sm align-middle caption-top table-borderless">
-                      <caption>Status Pengajuan Komisi</caption>
-                      <thead>
-                          <tr>
-                              <th>Sales Name</th>
-                              <th>Manager Notes</th>
-                              <th>HR Notes</th>
-                              <th>Status</th>
-                              <th>Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($pengajuan_komisi as $pengajuan_komisi_attach)
-                        <tr>
-                            <td>{{ $pengajuan_komisi_attach->name }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <form action="" method="">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></button>
-                              </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                  </table><hr>
-                {{-- Status Pengajuan Komisi Manual --}}
-                  <table class="table table-sm align-middle caption-top table-borderless">
-                      <caption>Status Pengajuan Komisi Manual</caption>
-                      <thead>
-                          <tr>
-                              <th scope="col">Sales Name</th>
-                              <th scope="col">Manager Notes</th>
-                              <th scope="col">HR Notes</th>
-                              <th scope="col">Status</th>
-                              <th scope="col">Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($pengajuan_manual as $pengajuan_manuals)
-                        <tr>
-                            <td>{{ $pengajuan_manuals->cust_name }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <form>
-                                <a href="home/destroy/{{ $pengajuan_manuals->id }}" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></a>
-                              </form>
-                            </td>
-                        </tr>
-                          
-                        @endforeach
-
-                      </tbody>
-                  </table><hr>
-                {{-- Status Pengajuan Tender --}}
-                  <table class="table table-sm align-middle caption-top table-borderless">
-                      <caption>Status Pengajuan Tender</caption>
-                      <thead>
-                          <tr>
-                              <th scope="col">Sales Name</th>
-                              <th scope="col">Manager Notes</th>
-                              <th scope="col">HR Notes</th>
-                              <th scope="col">Status</th>
-                              <th scope="col">Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($pengajuan_tender as $pengajuan_tenders)
-                        <tr>
-                            <td scope="row">{{ $pengajuan_tenders->cust_name }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              {{-- {{ route('pengajuan_manual.destroy', $pengajuan_tenders->id) }} --}}
-                              <form action="" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></button>
-                              </form>
-                            </td>
-                        </tr>                  
-                        @endforeach
-                      </tbody>
-                  </table><hr>
-                {{-- Status Pengajuan Pelanggan baru --}}
-                    <table class="table table-sm align-middle caption-top table-borderless">
-                        <caption>Status Pengajuan Pelanggan Baru</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Sales Name</th>
-                                <th scope="col">Manager Notes</th>
-                                <th scope="col">HR Notes</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($pelanggan_baru as $pelanggan_baru_attach)
-                          <tr>
-                              <td scope="row">{{ $pelanggan_baru_attach->name }}</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>
-                                <form action="" method="">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type="submit" class="btn btn-danger btn-sm mt-3" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span data-feather="trash-2"></span></button>
-                                </form>
-                              </td>
-                          </tr>
-                          @endforeach
-                        </tbody>
-                    </table><hr>
               </div>
             </div>
           </div>
@@ -218,5 +103,68 @@
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-  <script src="js/dashboard.js"></script>
+  {{-- <script src="js/dashboard.js"></script> --}}
+  <script>
+    (function () {
+    'use strict'
+  
+    feather.replace({ 'aria-hidden': 'true' })
+  
+    // Graphs
+    var ctx = document.getElementById('myChart')
+    // eslint-disable-next-line no-unused-vars
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ],
+        datasets: [{
+          data: [
+            {{ $totalJan }},
+            {{ $totalFeb }},
+            {{ $totalMar }},
+            {{ $totalApr }},
+            {{ $totalMei }},
+            // 240920,
+            // 120340,
+            // 240030,
+            // 184830,
+            // 213450,
+            // 120340,
+            // 234890
+          ],
+          lineTension: 0,
+          backgroundColor: 'transparent',
+          borderColor: '#007bff',
+          borderWidth: 4,
+          pointBackgroundColor: '#007bff'
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: false
+            }
+          }]
+        },
+        legend: {
+          display: false
+        }
+      }
+    })
+  })()
+  </script>
   @endsection

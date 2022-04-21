@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\PengajuanKomisi;
 use Carbon\Carbon;
 class PengajuanKomisiStartController extends Controller
 {
@@ -29,7 +30,6 @@ class PengajuanKomisiStartController extends Controller
                     'file' => $request->file('file'),
                 ]);
         }
-        return redirect('/home')->with('Success', 'Data berhasil disubmit');
-        // dd($dataAL);
+        return redirect('/status_pengajuan')->with('Success', 'Data berhasil disubmit');
     }
 }

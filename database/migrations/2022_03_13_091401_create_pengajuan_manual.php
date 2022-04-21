@@ -16,6 +16,7 @@ class CreatePengajuanManual extends Migration
         Schema::create('pengajuan_manual', function (Blueprint $table) {
             $table->id();
             $table->string('file');
+            $table->string('name');
             $table->text('cust_name');
             $table->string('no_pa');
             $table->string('no_al');

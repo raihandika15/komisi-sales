@@ -23,6 +23,7 @@ class PengajuanManualController extends Controller
         $pengajuan = New PengajuanManual();
 
         $pengajuan->file = request('file');
+        $pengajuan->name = request('name');
         $pengajuan->cust_name = request('cust_name');
         $pengajuan->no_pa = request('no_pa');
         $pengajuan->no_al = request('no_al');

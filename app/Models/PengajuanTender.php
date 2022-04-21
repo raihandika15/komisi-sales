@@ -13,7 +13,8 @@ class PengajuanTender extends Model
     protected $table = 'pengajuan_tender';
 
     protected $fillable = [
-        'file', 
+        'file',
+        'name',
         'cust_name',
         'segment',
         'date',
